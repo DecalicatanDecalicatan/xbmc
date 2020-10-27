@@ -371,8 +371,8 @@ void CExternalPlayer::Process()
 #endif
 
   CBookmark bookmark;
-  bookmark.totalTimeInSeconds = 3600;
-  bookmark.timeInSeconds = (elapsedMillis / 1000 >= m_playCountMinTime) ? 3600 : 200;
+  bookmark.totalTimeInSeconds = m_playCountMinTime;
+  bookmark.timeInSeconds = (elapsedMillis / 1000 >= m_playCountMinTime) ? m_playCountMinTime : 0;
   bookmark.player = m_name;
   m_callback.OnPlayerCloseFile(m_file, bookmark);
 
